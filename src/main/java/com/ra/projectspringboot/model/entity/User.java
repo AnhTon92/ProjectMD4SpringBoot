@@ -27,7 +27,7 @@ public class User {
     private String email;
 
     @Column(nullable = false, length = 100)
-    private String fullname;
+    private String fullName;
 
     @Column(nullable = false)
     private Boolean status;

@@ -1,13 +1,11 @@
 package com.ra.projectspringboot.security.jwt;
 
-import com.ra.security.principal.UserDetailCustom;
+import com.ra.projectspringboot.security.principal.UserDetailCustom;
 import io.jsonwebtoken.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
 import java.util.Date;
 
 @Component
