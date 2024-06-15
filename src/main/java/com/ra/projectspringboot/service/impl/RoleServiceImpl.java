@@ -9,10 +9,17 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class RoleServiceImpl implements IRoleService {
     private final IRoleRepository roleRepository;
+
+    @Override
+    public List<Role> findAll() {
+        return roleRepository.findAll();
+    }
 
     @Override
     public Role findByRoleName(RoleName roleName) throws CustomException {

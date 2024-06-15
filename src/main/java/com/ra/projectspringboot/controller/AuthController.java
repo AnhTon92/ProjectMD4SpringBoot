@@ -19,6 +19,12 @@ import java.net.URI;
 public class AuthController {
     private final IAuthService authService;
 
+
+    /**
+     * @param loginRequest is requestbody
+     * @apiNote handle login
+     * @throws CustomException
+     * */
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) throws CustomException {
         return ResponseEntity.ok().body(
@@ -29,6 +35,12 @@ public class AuthController {
                         .build()
         );
     }
+
+    /**
+     * @param registerRequest is requestbody
+     * @apiNote handle register
+     * @throws CustomException
+     * */
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody RegisterRequest registerRequest) throws CustomException {
