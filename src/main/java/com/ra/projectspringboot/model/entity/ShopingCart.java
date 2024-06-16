@@ -11,11 +11,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
-@Table(name = "shopingCart")
+@Table(name = "shoppingCart")
 public class ShopingCart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer shopping_cart_id;
+    private Long id;
 
     @ManyToOne // Khóa ngoại, cần thiết lập quan hệ với thực thể Product
     @JoinColumn(name = "user_id")
