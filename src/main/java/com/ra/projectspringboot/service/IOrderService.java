@@ -15,4 +15,12 @@ public interface IOrderService {
     List<Order> getAllOrderByStatus(String status) throws CustomException;
 
     List<Order> getAllOrder();
+
+    Order cancelOrderUser(Long orderId) throws CustomException;
+
+    List<Order> getAllOrderUserByStatus(String status) throws CustomException;
+
+    List<OrderDetailResponse> getDetailBySerialNumberOrder(String serialNumber);
+
+    List<Order> getAllOrderUser();
 }

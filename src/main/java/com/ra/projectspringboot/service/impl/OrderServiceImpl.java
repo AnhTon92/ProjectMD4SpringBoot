@@ -8,6 +8,7 @@ import com.ra.projectspringboot.model.entity.OrderStatus;
 import com.ra.projectspringboot.repository.IOrderDetailRepository;
 import com.ra.projectspringboot.repository.IOrderRepository;
 import com.ra.projectspringboot.service.IOrderService;
+import com.ra.projectspringboot.service.IUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,7 @@ import java.util.List;
 public class OrderServiceImpl implements IOrderService {
     private final IOrderRepository orderRepository;
     private final IOrderDetailRepository orderDetailRepository;
+    private final IUserService userService;
 
     @Override
     public Order changeStatusOrder(String newStatus, Long orderId) throws CustomException {
@@ -51,6 +53,32 @@ public class OrderServiceImpl implements IOrderService {
     @Override
     public List<Order> getAllOrder() {
         return orderRepository.findAll();
+    }
+
+    @Override
+    public Order cancelOrderUser(Long orderId) throws CustomException {
+        Order order = orderRepository.findById(orderId).orElseThrow(() -> new CustomException("order not found", HttpStatus.NOT_FOUND));
+        order.setStatus(OrderStatus.CANCEL);
+        return orderRepository.save(order);
+    }
+
+    @Override
+    public List<Order> getAllOrderUserByStatus(String status) throws CustomException {
+        try {
+            return orderRepository.findAllByStatusAndUserId(OrderStatus.valueOf(status), userService.getCurrentUser().getId());
+        } catch (Exception e) {
+            throw new CustomException(status + " can't not found", HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @Override
+    public List<OrderDetailResponse> getDetailBySerialNumberOrder(String serialNumber) {
+        return orderDetailRepository.findAllByOrderSerialNumber(serialNumber).stream().map(this::toOrderDetailResponse).toList();
+    }
+
+    @Override
+    public List<Order> getAllOrderUser() {
+        return orderRepository.findAllByUserId(userService.getCurrentUser().getId());
     }
 
     public OrderDetailResponse toOrderDetailResponse(OrderDetail orderDetail) {
