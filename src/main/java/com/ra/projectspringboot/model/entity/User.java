@@ -18,7 +18,7 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long user_id;
+    private Long id;
 
     @Column(unique = true, nullable = false, length = 100)
     private String username;
@@ -45,13 +45,13 @@ public class User {
     private String address;
 
     @Temporal(TemporalType.DATE)
-    private Date created_at = new Date();
+    private Date createdAt = new Date();
 
     @Temporal(TemporalType.DATE)
-    private Date updated_at;
+    private Date updatedAt;
 
     @Column(nullable = false)
-    private Boolean is_deleted = false;
+    private Boolean isDeleted = false;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_role",

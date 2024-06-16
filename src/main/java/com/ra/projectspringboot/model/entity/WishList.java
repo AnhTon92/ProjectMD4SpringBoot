@@ -13,7 +13,7 @@ import lombok.*;
 public class WishList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long wish_list_id;
+    private Long id;
 
     @JoinColumn(name = "user_id")
     @ManyToOne

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/admin/roles")
 @RequiredArgsConstructor
-public class RoleController {
+public class ARoleController {
     private final IRoleService roleService;
 
     @GetMapping

@@ -15,20 +15,20 @@ import java.util.UUID;
 @AllArgsConstructor
 @Data
 @Builder
-@Table(name = "order")
+@Table(name = "orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long order_id;
+    private Long id;
 
     @Column(unique = true, nullable = false, length = 100)
-    private String serial_number = UUID.randomUUID().toString();
+    private String serialNumber = UUID.randomUUID().toString();
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user; // Khóa ngoại, cần thiết lập quan hệ với thực thể User
 
-    private Double total_price;
+    private Double totalPrice;
 
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
@@ -37,17 +37,16 @@ public class Order {
     private String note;
 
     @Column(length = 100)
-    private String receive_name;
+    private String receiveName;
 
-    @Column(length = 255)
-    private String receive_address;
+    private String receiveAddress;
 
     @Column(length = 15)
-    private String receive_phone;
+    private String receivePhone;
 
     @Temporal(TemporalType.DATE)
-    private Date created_at = new Date();
+    private Date createdAt = new Date();
 
     @Temporal(TemporalType.DATE)
-    private Date received_at;
+    private Date receivedAt;
 }

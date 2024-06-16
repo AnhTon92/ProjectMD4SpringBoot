@@ -37,7 +37,7 @@ public class UserServiceImpl implements IUserService {
 
     public UserResponse toUserResponse(User user) {
         return UserResponse.builder()
-                .user_id(user.getUser_id())
+                .id(user.getId())
                 .username(user.getUsername())
                 .email(user.getEmail())
                 .fullName(user.getFullName())
@@ -45,9 +45,6 @@ public class UserServiceImpl implements IUserService {
                 .avatar(user.getAvatar())
                 .phone(user.getPhone())
                 .address(user.getAddress())
-                .created_at(user.getCreated_at())
-                .updated_at(user.getUpdated_at())
-                .is_deleted(user.getIs_deleted())
                 .build();
     }
 }

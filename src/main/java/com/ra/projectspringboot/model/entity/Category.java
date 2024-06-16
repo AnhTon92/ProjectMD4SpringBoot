@@ -11,14 +11,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
-@Table(name = "category")
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long category_id;
+    private Long id;
 
     @Column(nullable = false, length = 100)
-    private String category_name;
+    private String categoryName;
 
     @Column(columnDefinition = "TEXT")
     private String description;

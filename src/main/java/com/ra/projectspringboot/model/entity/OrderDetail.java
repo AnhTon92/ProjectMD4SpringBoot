@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class OrderDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long orderDetail_id;
+    private Long id;
     @ManyToOne
     @JoinColumn(name = "order_id")
     private Order order; // Khóa ngoại, cần thiết lập quan hệ với thực thể Order
@@ -27,8 +27,8 @@ public class OrderDetail {
     @Column(nullable = false, length = 100)
     private String name;
 
-    private Double unit_price;
+    private Double unitPrice;
 
     @Column(nullable = false)
-    private Integer order_quantity;
+    private Integer orderQuantity;
 }

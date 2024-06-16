@@ -17,7 +17,7 @@ import java.util.Date;
 @Data
 @Builder
 public class UserDetailCustom implements UserDetails {
-    private Long user_id;
+    private Long id;
     private String username;
     private String email;
     private String fullName;
@@ -33,7 +33,7 @@ public class UserDetailCustom implements UserDetails {
 
     public static UserDetailCustom buildUserDetails(User user) {
         return UserDetailCustom.builder()
-                .user_id(user.getUser_id())
+                .id(user.getId())
                 .username(user.getUsername())
                 .email(user.getEmail())
                 .fullName(user.getFullName())
@@ -42,9 +42,9 @@ public class UserDetailCustom implements UserDetails {
                 .avatar(user.getAvatar())
                 .phone(user.getPhone())
                 .address(user.getAddress())
-                .created_at(user.getCreated_at())
-                .updated_at(user.getUpdated_at())
-                .is_deleted(user.getIs_deleted())
+                .created_at(user.getCreatedAt())
+                .updated_at(user.getUpdatedAt())
+                .is_deleted(user.getIsDeleted())
                 .authorities(user.getRoles().stream().map(role -> new SimpleGrantedAuthority(role.getRoleName().name())).toList())
                 .build();
     }

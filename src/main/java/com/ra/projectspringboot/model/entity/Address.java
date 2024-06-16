@@ -13,18 +13,18 @@ import lombok.*;
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long address_id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
      private User user;
 
     @Column(nullable = false, length = 255)
-    private String full_address;
+    private String fullAddress;
 
     @Column(length = 15)
     private String phone;
 
     @Column(length = 50)
-    private String receive_name;
+    private String receiveName;
 }

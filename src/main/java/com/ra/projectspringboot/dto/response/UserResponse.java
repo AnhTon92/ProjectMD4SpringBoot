@@ -12,7 +12,7 @@ import java.util.Date;
 @Data
 @Builder
 public class UserResponse {
-    private Long user_id;
+    private Long id;
     private String username;
     private String email;
     private String fullName;
@@ -20,7 +20,4 @@ public class UserResponse {
     private String avatar;
     private String phone;
     private String address;
-    private Date created_at;
-    private Date updated_at;
-    private Boolean is_deleted;
 }

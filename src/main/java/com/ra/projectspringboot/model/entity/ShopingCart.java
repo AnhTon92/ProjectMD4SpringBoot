@@ -17,12 +17,12 @@ public class ShopingCart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer shopping_cart_id;
 
-   @ManyToOne // Khóa ngoại, cần thiết lập quan hệ với thực thể Product
+    @ManyToOne // Khóa ngoại, cần thiết lập quan hệ với thực thể Product
     @JoinColumn(name = "user_id")
-   private User user;
-   @ManyToOne
-   @JoinColumn(name = "product_id")// Khóa ngoại, cần thiết lập quan hệ với thực thể User
+    private User user;
+    @ManyToOne
+    @JoinColumn(name = "product_id")// Khóa ngoại, cần thiết lập quan hệ với thực thể User
     private Product product;
     @Column(nullable = false)
-    private Integer order_quantity;
+    private Integer orderQuantity;
 }

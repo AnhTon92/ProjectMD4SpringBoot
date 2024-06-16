@@ -13,7 +13,7 @@ import java.util.Date;
 public class JwtProvider {
     @Value("${jwt.secret_key}")
     private String SECRET_KEY;
-    @Value("${jwt.expired.access}")
+    @Value("${jwt.expired_access}")
     private Long EXPIRED_ACCESS;
 
 
