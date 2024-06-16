@@ -26,4 +26,8 @@ public interface IProductRepository extends JpaRepository<Product, Long> {
     @Query("select p from Product p join OrderDetail od on od.product.id = p.id")
     Set<Product> bestSellerProducts();
 
+    boolean existsByCategoryId(Long id);
+
+    boolean existsByProductName(String productName);
+
 }
