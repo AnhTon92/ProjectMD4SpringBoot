@@ -6,6 +6,7 @@ import com.ra.projectspringboot.dto.request.LoginRequest;
 import com.ra.projectspringboot.dto.request.RegisterRequest;
 import com.ra.projectspringboot.exception.CustomException;
 import com.ra.projectspringboot.service.IAuthService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +27,7 @@ public class AuthController {
      * @throws CustomException
      * */
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) throws CustomException {
+    public ResponseEntity<?> login(@Valid @RequestBody LoginRequest loginRequest) throws CustomException {
         return ResponseEntity.ok().body(
                 ResponseWrapper.builder()
                         .status(EHttpStatus.SUCCESS)
@@ -43,7 +44,7 @@ public class AuthController {
      * */
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody RegisterRequest registerRequest) throws CustomException {
+    public ResponseEntity<?> register(@Valid @RequestBody RegisterRequest registerRequest) throws CustomException {
         authService.register(registerRequest);
         return new ResponseEntity<>(
                 ResponseWrapper.builder()
