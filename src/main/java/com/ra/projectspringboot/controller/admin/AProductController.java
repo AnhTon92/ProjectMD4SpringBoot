@@ -76,7 +76,7 @@ public class AProductController {
 
     /**
      * @param productId Long
-     *                  thay đổi trạng thái đơn hàng
+     *                  xóa sản phẩm
      */
     @DeleteMapping("/{productId}/delete")
     public ResponseEntity<?> deleteProductId(@PathVariable Long productId) throws CustomException {

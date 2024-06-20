@@ -15,9 +15,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class CartItemRequest {
     @NotNull(message = "productId must be not null")
-    @NotEmpty(message = "productId must be not empty")
-    @NotBlank(message = "productId must be not blank")
     private Long productId;
-    @Min(value = 1, message = "quantity must be than 0")
+    @Min(value = 1, message = "quantity must be bigger than 0")
     private Integer quantity;
 }

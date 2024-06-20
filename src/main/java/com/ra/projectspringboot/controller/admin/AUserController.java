@@ -18,7 +18,7 @@ public class AUserController {
     private final IUserService userService;
 
     @GetMapping
-    public ResponseEntity<?> getAllUsers(@PageableDefault(page = 0, size = 5, sort = "user_id", direction = Sort.Direction.ASC) Pageable pageable) {
+    public ResponseEntity<?> getAllUsers(@PageableDefault(page = 0, size = 5, sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
         return ResponseEntity.ok().body(ResponseWrapper.builder()
                 .status(EHttpStatus.SUCCESS)
                 .code(200)

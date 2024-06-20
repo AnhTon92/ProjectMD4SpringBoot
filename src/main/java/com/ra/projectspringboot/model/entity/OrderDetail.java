@@ -24,11 +24,11 @@ public class OrderDetail {
     @JoinColumn(name = "product_id")
     private Product product; // Khóa ngoại, cần thiết lập quan hệ với thực thể Product
 
-    @Column(nullable = false, length = 100)
+
     private String name;
 
     private Double unitPrice;
 
-    @Column(nullable = false)
+
     private Integer orderQuantity;
 }

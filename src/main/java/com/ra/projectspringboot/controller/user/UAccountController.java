@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/user/account")
 @RequiredArgsConstructor
 public class UAccountController {
-    IUserService userService;
+    private final IUserService userService;
 
     /**
      * lấy thông tin người dùng đang đăng nhập

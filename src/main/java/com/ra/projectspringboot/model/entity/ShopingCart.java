@@ -23,6 +23,5 @@ public class ShopingCart {
     @ManyToOne
     @JoinColumn(name = "product_id")// Khóa ngoại, cần thiết lập quan hệ với thực thể User
     private Product product;
-    @Column(nullable = false)
     private Integer orderQuantity;
 }

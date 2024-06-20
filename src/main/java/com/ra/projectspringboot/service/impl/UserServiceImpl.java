@@ -1,5 +1,6 @@
 package com.ra.projectspringboot.service.impl;
 
+import com.ra.projectspringboot.constants.RoleName;
 import com.ra.projectspringboot.dto.request.ChangePasswordRequest;
 import com.ra.projectspringboot.dto.request.UpdateUserRequest;
 import com.ra.projectspringboot.dto.response.UserResponse;
@@ -38,6 +39,9 @@ public class UserServiceImpl implements IUserService {
     @Override
     public UserResponse changeStatusUser(Long userId) throws CustomException {
         User user = userRepository.findById(userId).orElseThrow(() -> new CustomException("user not found", HttpStatus.NOT_FOUND));
+        if (user.getRoles().stream().anyMatch(role -> role.getRoleName().equals(RoleName.ROLE_ADMIN))) {
+            throw new CustomException("admin is not blocked", HttpStatus.BAD_REQUEST);
+        }
         user.setStatus(!user.getStatus());
         return toUserResponse(userRepository.save(user));
     }

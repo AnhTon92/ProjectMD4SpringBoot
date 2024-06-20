@@ -13,7 +13,7 @@ import java.util.Date;
 public class JwtProvider {
     @Value("${jwt.secret_key}")
     private String SECRET_KEY;
-    @Value("${jwt.expired_access}")
+    @Value("${jwt.expired_access}") //4 giờ
     private Long EXPIRED_ACCESS;
 
 
@@ -25,7 +25,7 @@ public class JwtProvider {
         // 2. payload { subject: trường dữ liệu unique để biết được thằng đấy thằng nào }
         // 3. signature { chữ ký : secret key }
         return Jwts.builder()
-                .setSubject(userDetailCustom.getEmail())
+                .setSubject(userDetailCustom.getUsername())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(new Date().getTime() + EXPIRED_ACCESS))
                 .signWith(SignatureAlgorithm.HS512, SECRET_KEY)

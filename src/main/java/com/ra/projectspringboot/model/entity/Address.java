@@ -19,7 +19,6 @@ public class Address {
     @JoinColumn(name = "user_id")
      private User user;
 
-    @Column(nullable = false, length = 255)
     private String fullAddress;
 
     @Column(length = 15)
